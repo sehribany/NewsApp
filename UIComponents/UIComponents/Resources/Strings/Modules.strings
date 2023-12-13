@@ -1,0 +1,16 @@
+/* 
+  Modules.strings
+  UIComponents
+
+  Created by Şehriban Yıldırım on 10.12.2023.
+  
+*/
+
+// MARK: - Intro
+"WalkThrough.Next"            = "Continue!";
+"WalkThrough.Start"           = "Explore!";
+"WalkThrough.firstTitle"      = "Welcome to the World of News!";
+"WalkThrough.secondTitle"     = "Explore the World at Your Fingertips.";
+"WalkThrough.thirdTitle"      = "Take the First Step into Information.";
+"WalkThrough.descriptionText" = "Stay ahead with real-time news updates, your gateway to global happenings.";
+
