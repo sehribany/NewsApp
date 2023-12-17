@@ -18,7 +18,6 @@ class BaseViewController<V: BaseViewProtocol>: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Asset.Colors.appWhite.color
         subscribeToast()
     }
     
@@ -42,7 +41,7 @@ extension BaseViewController {
     func addNavigationBarLogo() {
         let image                = Asset.Images.logo.image
         let imageView            = UIImageView()
-        imageView.size(CGSize(width: 200, height: 100))
+        imageView.size(CGSize(width: 100, height: 40))
         imageView.contentMode    = .scaleAspectFit
         imageView.image          = image
         navigationItem.titleView = imageView
