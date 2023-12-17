@@ -13,10 +13,10 @@ public struct Article: Codable {
     public let description: String?
     public let url        : String
     public let urlToImage : String?
-    public let publishedAt: Date
-    public let content    : String
+    public let publishedAt: String
+    public let content    : String?
     
-    public init(source: Source, author: String?, title: String, description: String?, url: String, urlToImage: String?, publishedAt: Date, content: String) {
+    public init(source: Source, author: String?, title: String, description: String?, url: String, urlToImage: String?, publishedAt: String, content: String?) {
         self.source      = source
         self.author      = author
         self.title       = title
