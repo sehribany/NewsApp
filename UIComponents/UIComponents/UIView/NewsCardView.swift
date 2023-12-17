@@ -12,6 +12,8 @@ public class NewsCardView: UIView {
     private var imageView: UIImageView = {
         let imageView         = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 8 
+        imageView.clipsToBounds = true
         return imageView
     }()
     private var newsStackView : UIStackView = {
@@ -23,16 +25,17 @@ public class NewsCardView: UIView {
     private var titleLabel: UILabel = {
         let label           = UILabel()
         label.font          = UIFont.font(.nunitoBold, size: .xLarge)
-        label.textAlignment = .center
+        label.textAlignment = .left
+        label.numberOfLines = 2
         label.textColor     = .appDark
         return label
     }()
     private var descriptionLabel: UILabel = {
         let label                       = UILabel()
         label.font                      = UIFont.font(.nunitoSemiBold, size: .xLarge)
-        label.textAlignment             = .center
+        label.textAlignment             = .left
         label.textColor                 = .appBlack
-        label.numberOfLines             = 0
+        label.numberOfLines             = 3
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -59,17 +62,18 @@ extension NewsCardView{
     
     private func addImageView(){
         addSubview(imageView)
-        imageView.rightToSuperview().constant = -10
-        imageView.width(100)
-        imageView.height(100)
+        imageView.leftToSuperview().constant  = 15
+        imageView.rightToSuperview().constant = -15
+        imageView.aspectRatio(1)
     }
     
     private func addNewsStackView(){
         addSubview(newsStackView)
+        newsStackView.topToBottom(of: imageView)
+        newsStackView.leftToSuperview().constant  = 15
+        newsStackView.rightToSuperview().constant = -15
         newsStackView.addArrangedSubview(titleLabel)
         newsStackView.addArrangedSubview(descriptionLabel)
-        newsStackView.leadingToSuperview().constant  = 20
-        newsStackView.trailingToSuperview().constant = -20
     }
 }
 
