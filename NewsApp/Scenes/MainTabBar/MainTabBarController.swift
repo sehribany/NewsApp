@@ -46,7 +46,7 @@ class MainTabBarController: UITabBarController {
     
     private func createHomeViewController(categoryName: String) -> UINavigationController{
         let homeRouter            = HomeRouter()
-        let homeViewModel         = HomeViewModel(newsListingType: .category(categoryName: categoryName), router: homeRouter)
+        let homeViewModel         = HomeViewModel(router: homeRouter)
         let homeViewController    = HomeViewController(viewModel: homeViewModel)
         let navController         = MainNavigationController(rootViewController: homeViewController)
         configureTabBarIcons(navController: navController, icon: Asset.Icons.icHome.image)
