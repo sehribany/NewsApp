@@ -8,8 +8,8 @@
 import DataProvider
 
 protocol HomeViewDataSource {
-    var numberOfItems: Int { get }
-    func cellItem(for indexPath: IndexPath) -> NewsCellProtocol
+    func numberOfItemsAt(section: Int) -> Int
+    func cellItemAt(indexPath: IndexPath) -> NewsCellProtocol
 }
 
 protocol HomeViewEventSource {
@@ -17,25 +17,28 @@ protocol HomeViewEventSource {
 }
 
 protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {
-    func fetchNews()
-    func fetchMorePages()
+
 }
 
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
-
+    var didSuccessFetchNews: VoidClosure?
+    var cellItems          : [NewsCellModel] = []
+    
     private var page     = 1
     var isRequestEnabled = false
     var isPagingEnabled  = false
-    var cellItems          : [NewsCellModel] = []
-    var didSuccessFetchNews: VoidClosure?
+    
 
-    var numberOfItems: Int {
+    func numberOfItemsAt(section: Int) -> Int {
         return cellItems.count
     }
     
-    func cellItem(for indexPath: IndexPath) -> NewsCellProtocol {
-        let cellItem = cellItems[indexPath.item]
-        return cellItem
+    func cellItemAt(indexPath: IndexPath) -> NewsCellProtocol {
+        return cellItems[indexPath.row]
+    }
+    
+    init(router: HomeRouter) {
+        super.init(router: router)
     }
 }
 
@@ -43,14 +46,27 @@ final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
 extension HomeViewModel {
     
     func fetchNews() {
-
-        
-        
-
-        
+        let request = GetCountryNewsRequest(page: page)
+        self.isRequestEnabled = false
+        if page == 1 { showActivityIndicatorView?() }
+        dataProvider.request(for: request) { [weak self] result in
+            guard let self = self else { return }
+            self.hideActivityIndicatorView?()
+            self.isRequestEnabled = true
+            switch result{
+            case .success(let response):
+                let cellItems = response.articles.map({NewsCellModel(article: $0)})
+                self.cellItems.append(contentsOf: cellItems)
+                self.page += 1
+                self.didSuccessFetchNews?()
+            case .failure(let error):
+                print("\(error.localizedDescription) ER \(error)")
+            }
+        }
     }
     
-    func fetchMorePages() {
+    func fetchMorePages(){
         fetchNews()
     }
 }
+    

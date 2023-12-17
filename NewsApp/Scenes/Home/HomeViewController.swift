@@ -10,83 +10,90 @@ import UIComponents
 import KeychainSwift
 
 final class HomeViewController: BaseViewController<HomeViewModel> {
-    
-    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    
-    private lazy var subViewControllers: [UIViewController] = {
-        return self.preparedViewControllers()
+
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(NewsCell.self, forCellWithReuseIdentifier: NewsCell.identifier)
+        return collectionView
     }()
-    
-    private let keychain = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Asset.Colors.appBlack.color
+        addNavigationBarLogo()
         addSubViews()
         configureContents()
+        viewModel.fetchNews()
+        subscribeViewModelEvents()
     }
     
+    private func subscribeViewModelEvents() {
+        viewModel.didSuccessFetchNews = { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
+    }
 }
 // MARK: - UILayout
 extension HomeViewController {
     
     private func addSubViews() {
-        addPageViewController()
-        addNavigationBarLogo()
+        addCollectionView()
     }
     
-    private func addPageViewController() {
-        view.addSubview(pageViewController.view)
-        pageViewController.view.edgesToSuperview(excluding: .top, usingSafeArea: true)
+    private func addCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.edgesToSuperview()
     }
 }
-
 // MARK: - Configure and Set Localize
 extension HomeViewController {
-    
     private func configureContents() {
-        view.backgroundColor = Asset.Colors.appWhite.color
-        definesPresentationContext = true
-        addChild(pageViewController)
-        pageViewController.didMove(toParent: self)
-        pageViewController.delegate   = self
-        pageViewController.dataSource = self
+        collectionView.delegate        = self
+        collectionView.dataSource      = self
     }
 }
-// MARK: - UIPageViewController
-extension HomeViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return subViewControllers.count
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let currentIndex = subViewControllers.firstIndex(of: viewController) ?? 0
-        if currentIndex <= 0 {
-            return nil
-        }
-        return subViewControllers[currentIndex - 1]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let currentIndex = subViewControllers.firstIndex(of: viewController) ?? 0
-        if currentIndex >= subViewControllers.count - 1 {
-            return nil
-        }
-        return subViewControllers[currentIndex + 1]
-    }
-}
-// MARK: - Logout
-extension HomeViewController {
+// MARK: - UICollectionViewDataSource
+extension HomeViewController: UICollectionViewDataSource {
 
-    private func checkIsUserLogin() {
-        if keychain.get(Keychain.token) != nil {
-            setupLogoutRightBarButton()
-        } else {
-            navigationItem.rightBarButtonItem = .none
-        }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  viewModel.numberOfItemsAt(section: section)
     }
     
-    @objc
-    private func logoutBarButtonDidTap() {
-        viewModel.userLogout()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: NewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
+        let cellItem = viewModel.cellItemAt(indexPath: indexPath)
+        cell.set(viewModel: cellItem)
+        return cell
+    }
+}
+// MARK: - UICollectionViewDelegateFlowLayout
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        return CGSize(width: width, height: width * 1.3 )
+    }
+}
+// MARK: - UIScrollViewDelegate
+extension HomeViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > collectionView.contentSize.height - 100 - scrollView.frame.size.height && viewModel.isPagingEnabled && viewModel.isRequestEnabled {
+            viewModel.fetchNews()
+        }
     }
 }

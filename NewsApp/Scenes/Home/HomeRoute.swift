@@ -6,11 +6,11 @@
 //
 
 protocol HomeRoute{
-    func placeOnWindowHome()
+    func pushNews()
 }
 
 extension HomeRoute where Self: RouterProtocol{
-    func placeOnWindowHome() {
+    func pushNews() {
         let router            = HomeRouter()
         let viewModel         = HomeViewModel(router: router)
         let viewController    = HomeViewController(viewModel: viewModel)
