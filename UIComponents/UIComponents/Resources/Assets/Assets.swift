@@ -27,7 +27,9 @@ public enum Asset {
   public enum Colors {
     public static let appBlack = ColorAsset(name: "appBlack")
     public static let appDark = ColorAsset(name: "appDark")
+    public static let appPrimaryBackground = ColorAsset(name: "appPrimaryBackground")
     public static let appRaven = ColorAsset(name: "appRaven")
+    public static let appSecondaryBackground = ColorAsset(name: "appSecondaryBackground")
     public static let appWhite = ColorAsset(name: "appWhite")
   }
   public enum Icons {
