@@ -26,8 +26,10 @@ public class NewsCell: UICollectionViewCell, ReusableView{
     
     private func configureContents() {
         addSubview(newsCard)
-        backgroundColor = .appWhite
-        newsCard.edgesToSuperview()
+        newsCard.backgroundColor = .appWhite
+        newsCard.edgesToSuperview(insets: .init(top: 0, left: 10, bottom: 0, right: 10))
+        //newsCard.edgesToSuperview()
+        newsCard.layer.cornerRadius = 40
     }
     
     public func set(viewModel: NewsCellProtocol) {
