@@ -12,8 +12,9 @@ import KeychainSwift
 final class HomeViewController: BaseViewController<HomeViewModel> {
 
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout         = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = Asset.Colors.appWhite.color
         collectionView.register(NewsCell.self, forCellWithReuseIdentifier: NewsCell.identifier)
         return collectionView
     }()
@@ -76,7 +77,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -85,7 +86,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
-        return CGSize(width: width, height: width * 1.3 )
+        return CGSize(width: width, height: width - 260)
     }
 }
 // MARK: - UIScrollViewDelegate
