@@ -8,35 +8,36 @@
 import UIKit
 
 public class NewsCardView: UIView {
-
+    
     private var imageView: UIImageView = {
-        let imageView         = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 8 
-        imageView.clipsToBounds = true
+        let imageView                 = UIImageView()
+        imageView.contentMode         = .scaleAspectFill
+        imageView.layer.cornerRadius  = 10
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds       = true
         return imageView
     }()
     private var newsStackView : UIStackView = {
         let stackView       = UIStackView()
         stackView.axis      = .vertical
-        stackView.spacing   = 10
+        stackView.spacing   = 8
         return stackView
     }()
     private var titleLabel: UILabel = {
         let label           = UILabel()
-        label.font          = UIFont.font(.nunitoBold, size: .xLarge)
+        label.font          = UIFont.font(.nunitoExtraBold, size: .medium)
         label.textAlignment = .left
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.textColor     = .appDark
         return label
     }()
+    
     private var descriptionLabel: UILabel = {
         let label                       = UILabel()
-        label.font                      = UIFont.font(.nunitoSemiBold, size: .xLarge)
+        label.font                      = UIFont.font(.nunitoBold, size: .small)
         label.textAlignment             = .left
-        label.textColor                 = .appBlack
+        label.textColor                 = .appTitle
         label.numberOfLines             = 3
-        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -62,16 +63,17 @@ extension NewsCardView{
     
     private func addImageView(){
         addSubview(imageView)
-        imageView.leftToSuperview().constant  = 15
-        imageView.rightToSuperview().constant = -15
-        imageView.aspectRatio(1)
+        imageView.leftToSuperview().constant = 10
+        imageView.centerYToSuperview()
+        imageView.width(100)
+        imageView.height(100)
     }
     
     private func addNewsStackView(){
         addSubview(newsStackView)
-        newsStackView.topToBottom(of: imageView)
-        newsStackView.leftToSuperview().constant  = 15
-        newsStackView.rightToSuperview().constant = -15
+        newsStackView.leadingToTrailing(of: imageView, offset: 10)
+        newsStackView.trailingToSuperview().constant  = -10
+        newsStackView.topToSuperview().constant = 18
         newsStackView.addArrangedSubview(titleLabel)
         newsStackView.addArrangedSubview(descriptionLabel)
     }
