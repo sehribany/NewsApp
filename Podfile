@@ -21,7 +21,6 @@ target 'NewsApp' do
   pod 'Kingfisher'
   pod 'TinyConstraints'
   pod 'SwiftEntryKit'
-  pod 'Segmentio'
   
 end
 
@@ -44,7 +43,6 @@ target 'UIComponents' do
   pod 'SwiftGen'
   pod 'Kingfisher'
   pod 'TinyConstraints'
-  pod 'Segmentio'
   pod 'SwiftEntryKit'
     
 end
