@@ -68,6 +68,9 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.set(viewModel: cellItem)
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.showNewsDetailScreen(at: indexPath)
+    }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {

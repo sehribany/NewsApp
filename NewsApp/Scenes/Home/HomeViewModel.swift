@@ -17,17 +17,22 @@ protocol HomeViewEventSource {
 }
 
 protocol HomeViewProtocol: HomeViewDataSource, HomeViewEventSource {
-
+    func showNewsDetailScreen(at indexPath: IndexPath)
 }
 
 final class HomeViewModel: BaseViewModel<HomeRouter>, HomeViewProtocol {
     var didSuccessFetchNews: VoidClosure?
     var cellItems          : [NewsCellModel] = []
+    var title              : String?
     
     private var page     = 1
     var isRequestEnabled = false
     var isPagingEnabled  = false
     
+    func showNewsDetailScreen(at indexPath: IndexPath) {
+        let news = cellItems[indexPath.row]
+        router.pushNewsDetail(article: news.article)
+    }
 
     func numberOfItemsAt(section: Int) -> Int {
         return cellItems.count

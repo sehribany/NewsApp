@@ -5,4 +5,6 @@
 //  Created by Şehriban Yıldırım on 12.12.2023.
 //
 
-final class HomeRouter: Router {}
+final class HomeRouter: Router, HomeRouter.Routes {
+    typealias Routes = NewsDetailRoute
+}
