@@ -5,9 +5,11 @@
 //  Created by Şehriban Yıldırım on 12.12.2023.
 //
 
-import Foundation
+import UIComponents
 
-protocol CategoriesViewDataSource {}
+protocol CategoriesViewDataSource {
+    
+}
 
 protocol CategoriesViewEventSource {}
 
@@ -15,4 +17,5 @@ protocol CategoriesViewProtocol: CategoriesViewDataSource, CategoriesViewEventSo
 
 final class CategoriesViewModel: BaseViewModel<CategoriesRouter>, CategoriesViewProtocol {
     
+
 }
