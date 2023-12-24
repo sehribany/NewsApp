@@ -10,10 +10,10 @@ public struct News: Codable {
     public let status      : String
     public let totalResults: Int
     public let articles    : [Article]
-    
-    public init(status: String, totalResults: Int, articles: [Article]) {
+   
+    public init(status:String, totalResults:Int, articles: [Article]) {
+        self.articles     = articles
         self.status       = status
         self.totalResults = totalResults
-        self.articles     = articles
     }
 }

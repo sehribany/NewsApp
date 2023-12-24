@@ -7,7 +7,6 @@
 
 // MARK: - Article
 public struct Article: Codable {
-    public let source     : Source
     public let author     : String?
     public let title      : String
     public let description: String?
@@ -16,8 +15,7 @@ public struct Article: Codable {
     public let publishedAt: String
     public let content    : String?
     
-    public init(source: Source, author: String?, title: String, description: String?, url: String, urlToImage: String?, publishedAt: String, content: String?) {
-        self.source      = source
+    public init(author: String?, title: String, description: String?, url: String, urlToImage: String?, publishedAt: String, content: String?) {
         self.author      = author
         self.title       = title
         self.description = description
