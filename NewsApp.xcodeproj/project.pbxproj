@@ -40,6 +40,8 @@
 		989792092B31E09C000732D5 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989792062B31E09C000732D5 /* NewsDetailViewController.swift */; };
 		9897920A2B31E09C000732D5 /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989792072B31E09C000732D5 /* NewsDetailViewModel.swift */; };
 		9897920C2B31E0AA000732D5 /* NewsDetailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9897920B2B31E0AA000732D5 /* NewsDetailRoute.swift */; };
+		98B5CCDB2B3840D300FED7CC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5CCDA2B3840D300FED7CC /* HeaderView.swift */; };
+		98B5CCDD2B3840F700FED7CC /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5CCDC2B3840F700FED7CC /* HeaderViewModel.swift */; };
 		98DEB58B2B289DAE008B6384 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB5882B289DAE008B6384 /* SearchRouter.swift */; };
 		98DEB58C2B289DAE008B6384 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB5892B289DAE008B6384 /* SearchViewController.swift */; };
 		98DEB58D2B289DAE008B6384 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB58A2B289DAE008B6384 /* SearchViewModel.swift */; };
@@ -109,6 +111,8 @@
 		989792062B31E09C000732D5 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		989792072B31E09C000732D5 /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
 		9897920B2B31E0AA000732D5 /* NewsDetailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailRoute.swift; sourceTree = "<group>"; };
+		98B5CCDA2B3840D300FED7CC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		98B5CCDC2B3840F700FED7CC /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 		98DEB5882B289DAE008B6384 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		98DEB5892B289DAE008B6384 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		98DEB58A2B289DAE008B6384 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +313,15 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		98B5CCD32B38404C00FED7CC /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				98B5CCDA2B3840D300FED7CC /* HeaderView.swift */,
+				98B5CCDC2B3840F700FED7CC /* HeaderViewModel.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		98DEB5A02B289E24008B6384 /* NewsDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +336,7 @@
 		98E1ABFC2B27B8AA000BB3D0 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				98B5CCD32B38404C00FED7CC /* Header */,
 				98DEB5942B289DC4008B6384 /* CategoriesRouter.swift */,
 				98DEB59E2B289DF3008B6384 /* CategoriesRoute.swift */,
 				98DEB5962B289DC4008B6384 /* CategoriesViewModel.swift */,
@@ -498,10 +512,12 @@
 				98DEB5922B289DBC008B6384 /* HomeViewController.swift in Sources */,
 				989792082B31E09C000732D5 /* NewsDetailRouter.swift in Sources */,
 				9807F8A02B263E93001DABE3 /* DataProvider.swift in Sources */,
+				98B5CCDD2B3840F700FED7CC /* HeaderViewModel.swift in Sources */,
 				9807F8722B262E82001DABE3 /* PhotoBrowserDelegate.swift in Sources */,
 				98DEB58C2B289DAE008B6384 /* SearchViewController.swift in Sources */,
 				9897920C2B31E0AA000732D5 /* NewsDetailRoute.swift in Sources */,
 				98DEB5912B289DBC008B6384 /* HomeRouter.swift in Sources */,
+				98B5CCDB2B3840D300FED7CC /* HeaderView.swift in Sources */,
 				989792092B31E09C000732D5 /* NewsDetailViewController.swift in Sources */,
 				9807F8862B2631CD001DABE3 /* IntroViewModel.swift in Sources */,
 				9807F87E2B263106001DABE3 /* BaseViewModel.swift in Sources */,
