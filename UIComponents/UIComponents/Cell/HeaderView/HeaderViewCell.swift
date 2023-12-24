@@ -38,7 +38,6 @@ public class HeaderViewCell: UICollectionViewCell, ReusableView {
 }
 
 // MARK: - UILayout
-
 extension HeaderViewCell{
     
     private func addSubViews(){
@@ -47,8 +46,8 @@ extension HeaderViewCell{
     
     private func addTitle(){
         addSubview(titleLabel)
-        titleLabel.leadingToSuperview().constant  = 2
-        titleLabel.trailingToSuperview().constant = -2
+        titleLabel.leadingToSuperview().constant  = 5
+        titleLabel.trailingToSuperview().constant = -5
         titleLabel.topToSuperview().constant      = 1
         titleLabel.bottomToSuperview().constant   = -1
     }

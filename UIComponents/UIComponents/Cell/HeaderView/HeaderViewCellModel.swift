@@ -6,7 +6,7 @@
 //
 
 public protocol HeaderViewCellDataSource: AnyObject {
-    var titleText       : String {get}
+    var titleText: String {get}
 }
 
 public protocol HeaderViewCellEventSource: AnyObject {}
@@ -14,9 +14,9 @@ public protocol HeaderViewCellEventSource: AnyObject {}
 public protocol HeaderViewCellProtocol: HeaderViewCellDataSource, HeaderViewCellEventSource {}
 
 public final class HeaderViewCellModel: HeaderViewCellProtocol {
-    public var titleText      : String
+    public var titleText: String
     
     public init(titleText: String) {
-        self.titleText       = titleText
+        self.titleText = titleText
     }
 }
