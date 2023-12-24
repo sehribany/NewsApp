@@ -10,6 +10,8 @@ import UIKit
 
 final class CategoriesViewController: BaseViewController<CategoriesViewModel> {
     
+    private var selectedIndex = 0
+    
     private let collectionView: UICollectionView = {
         let layout         = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,6 +27,15 @@ final class CategoriesViewController: BaseViewController<CategoriesViewModel> {
         addNavigationBarLogo()
         addSubViews()
         configureContents()
+        viewModel.fetchNews(listingType: .business)
+        subscribeViewModelEvents()
+    }
+    
+    private func subscribeViewModelEvents() {
+        viewModel.didSuccessFetchNews = { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
     }
 }
 // MARK: - UILayout
@@ -43,27 +54,59 @@ extension CategoriesViewController {
 // MARK: - Configure and Set Localize
 extension CategoriesViewController {
     private func configureContents() {
+        collectionView.backgroundColor = Asset.Colors.appSecondaryBackground.color
         collectionView.delegate        = self
         collectionView.dataSource      = self
     }
 }
 
+// MARK: -HeaderViewEventSource
+extension CategoriesViewController: HeaderViewEventSource{
+    
+    func didSelectHeaderItem(at index: IndexPath){
+        switch index.item{
+        case 0:
+            viewModel.fetchNews(listingType: .business)
+        case 1:
+            viewModel.fetchNews(listingType: .entertainment)
+        case 2:
+            viewModel.fetchNews(listingType: .health)
+        case 3:
+            viewModel.fetchNews(listingType: .science)
+        case 4:
+            viewModel.fetchNews(listingType: .sports)
+        case 5:
+            viewModel.fetchNews(listingType: .technology)
+        default:
+            break
+        }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+}
 // MARK: - UICollectionViewDataSource
 extension CategoriesViewController: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 10
+        return viewModel.numberOfItemsAt(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: NewsCell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
-
+        let cellItem = self.viewModel.cellItemAt(indexPath: indexPath)
+        cell.set(viewModel: cellItem)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.showNewsDetailScreen(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.identifier, for: indexPath) as! HeaderView
+            headerView.delegate = self
             return headerView
         } else {
             return UICollectionReusableView()
