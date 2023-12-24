@@ -6,7 +6,6 @@
 //
 
 public enum ListingType {
-    case general
     case business
     case entertainment
     case health
@@ -30,27 +29,21 @@ public struct GetNewsRequest: APIDecodableResponseRequest{
         self.listingType        = listingType
         
         switch listingType {
-        case .general:
-            path = "/sources?category=general&"
         case .business:
-            path = "/sources?category=business&"
+            path = "?country=us&category=business&"
         case .entertainment:
-            path = "/sources?category=entertainment&"
+            path = "?country=us&category=entertainment&"
         case .health:
-            path = "/sources?category=health&"
+            path = "?country=us&category=health&"
         case .science:
-            path = "/sources?category=science&"
+            path = "?country=us&category=science&"
         case .sports:
-            path = "/sources?category=sports&"
+            path = "?country=us&category=sports&"
         case .technology:
-            path = "/sources?category=technology&"            
+            path = "?country=us&category=technology&"
         }
     }
 }
 
-
-
-//https://newsapi.org/v2/top-headlines  ?country=us&  apiKey=aa76d1da00604d86a1f9cc53cc425ed0                 -Ülkeye göre haber
 //https://newsapi.org/v2/top-headlines  ?q=Israel&    apiKey=aa76d1da00604d86a1f9cc53cc425ed0                 -Anahtar kelimeye göre
 //https://newsapi.org/v2/top-headlines  /sources?category=business&  apiKey=aa76d1da00604d86a1f9cc53cc425ed0  -Category
-
