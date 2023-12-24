@@ -22,7 +22,7 @@ public extension APIDecodableResponseRequest {
 // MARK: - url
 public extension APIDecodableResponseRequest {
     var url: String {
-        return "https://newsapi.org/v2/top-headlines" + path + "apiKey=aa76d1da00604d86a1f9cc53cc425ed0"
+        return "https://newsapi.org/v2/top-headlines" + path + "apiKey=0b921597f4ec4a62bf281c491a9ce880"
     }
 }
 
@@ -39,3 +39,4 @@ public extension APIDecodableResponseRequest {
         return [:]
     }
 }
+//0b921597f4ec4a62bf281c491a9ce880
