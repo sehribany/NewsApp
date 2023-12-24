@@ -13,7 +13,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         configureContents()
         let searchViewController     = createSearchViewController()
-        let homeViewController       = createHomeViewController(categoryName: "general")
+        let homeViewController       = createHomeViewController()
         let categoriesViewController = createCategoriesViewController()
         viewControllers              = [categoriesViewController,homeViewController,searchViewController]
     }
@@ -44,7 +44,7 @@ class MainTabBarController: UITabBarController {
         return navController
     }
     
-    private func createHomeViewController(categoryName: String) -> UINavigationController{
+    private func createHomeViewController() -> UINavigationController{
         let homeRouter            = HomeRouter()
         let homeViewModel         = HomeViewModel(router: homeRouter)
         let homeViewController    = HomeViewController(viewModel: homeViewModel)
