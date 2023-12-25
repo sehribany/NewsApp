@@ -60,12 +60,13 @@ extension HomeViewModel {
             self.isRequestEnabled = true
             switch result{
             case .success(let response):
+                self.cellItems.removeAll()
                 let cellItems = response.articles.map({NewsCellModel(article: $0)})
                 self.cellItems.append(contentsOf: cellItems)
                 self.page += 1
                 self.didSuccessFetchNews?()
             case .failure(let error):
-                print("\(error.localizedDescription) ER \(error)")
+                print("\(error.localizedDescription)")
             }
         }
     }
