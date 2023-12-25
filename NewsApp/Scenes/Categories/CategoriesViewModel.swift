@@ -24,7 +24,6 @@ final class CategoriesViewModel: BaseViewModel<CategoriesRouter>, CategoriesView
     
     var didSuccessFetchNews: VoidClosure?
     var cellItems          : [NewsCellModel] = []
-    var title              : String?
 
     private var page     = 1
     var isRequestEnabled = false

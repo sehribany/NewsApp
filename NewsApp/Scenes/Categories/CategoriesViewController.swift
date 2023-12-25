@@ -11,8 +11,8 @@ import UIKit
 final class CategoriesViewController: BaseViewController<CategoriesViewModel> {
     
     private let collectionView: UICollectionView = {
-        let layout         = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let layout                     = UICollectionViewFlowLayout()
+        let collectionView             = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Asset.Colors.appWhite.color
         collectionView.register(NewsCell.self, forCellWithReuseIdentifier: NewsCell.identifier)
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.identifier)
