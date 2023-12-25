@@ -19,6 +19,3 @@ public struct GetCountryNewsRequest: APIDecodableResponseRequest{
         self.path = "?country=us&"
     }
 }
-
-
-//https://newsapi.org/v2/top-headlines  ?country=us&  apiKey=aa76d1da00604d86a1f9cc53cc425ed0

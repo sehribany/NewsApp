@@ -44,6 +44,3 @@ public struct GetNewsRequest: APIDecodableResponseRequest{
         }
     }
 }
-
-//https://newsapi.org/v2/top-headlines  ?q=Israel&    apiKey=aa76d1da00604d86a1f9cc53cc425ed0                 -Anahtar kelimeye göre
-//https://newsapi.org/v2/top-headlines  /sources?category=business&  apiKey=aa76d1da00604d86a1f9cc53cc425ed0  -Category
