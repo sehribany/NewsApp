@@ -15,7 +15,9 @@ public protocol NewsCardViewEventSource: AnyObject {}
 public protocol NewsCardViewProtocol: NewsCardViewDataSource, NewsCardViewEventSource {}
 
 public final class NewsCardViewModel: NewsCardViewProtocol {
+    
     public var article: Article
+    
     public init(article: Article) {
         self.article = article
     }

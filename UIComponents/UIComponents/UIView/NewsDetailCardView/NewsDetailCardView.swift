@@ -32,20 +32,20 @@ public class NewsDetailCardView: UIView {
     }()
     
     public var descriptionLabel: UILabel = {
-        let label                       = UILabel()
-        label.font                      = UIFont.font(.nunitoBold, size: .medium)
-        label.textAlignment             = .left
-        label.textColor                 = .appBlack
-        label.numberOfLines             = 10
+        let label            = UILabel()
+        label.font           = UIFont.font(.nunitoBold, size: .medium)
+        label.textAlignment  = .left
+        label.textColor      = .appBlack
+        label.numberOfLines  = 10
         return label
     }()
     
     public var dateLabel: UILabel = {
-        let label                       = UILabel()
-        label.font                      = UIFont.font(.nunitoBold, size: .xSmall)
-        label.textAlignment             = .center
-        label.textColor                 = .appTitle
-        label.numberOfLines             = 3
+        let label            = UILabel()
+        label.font           = UIFont.font(.nunitoBold, size: .xSmall)
+        label.textAlignment  = .center
+        label.textColor      = .appTitle
+        label.numberOfLines  = 3
         return label
     }()
     
@@ -59,21 +59,21 @@ public class NewsDetailCardView: UIView {
     }()
     
     public var authorLabel: UILabel = {
-        let label                       = UILabel()
-        label.font                      = UIFont.font(.nunitoBold, size: .small)
-        label.textAlignment             = .center
-        label.textColor                 = .appTitle
-        label.numberOfLines             = 3
+        let label           = UILabel()
+        label.font          = UIFont.font(.nunitoBold, size: .small)
+        label.textAlignment = .center
+        label.textColor     = .appTitle
+        label.numberOfLines = 3
         return label
     }()
     
     public var newsSourceButton: UIButton = {
-        let button                 = UIButton()
-        button.backgroundColor     = Asset.Colors.appWhite.color
-        button.titleLabel?.font    = UIFont.font(.nunitoBold, size: .xLarge)
-        button.layer.borderWidth   = 0.5
-        button.layer.borderColor   = Asset.Colors.appTitle.color.cgColor
-        button.layer.cornerRadius  = 10
+        let button                = UIButton()
+        button.backgroundColor    = Asset.Colors.appWhite.color
+        button.titleLabel?.font   = UIFont.font(.nunitoBold, size: .xLarge)
+        button.layer.borderWidth  = 0.5
+        button.layer.borderColor  = Asset.Colors.appTitle.color.cgColor
+        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(Asset.Colors.appDark.color, for: .normal)
         button.setTitle("News Source", for: .normal)

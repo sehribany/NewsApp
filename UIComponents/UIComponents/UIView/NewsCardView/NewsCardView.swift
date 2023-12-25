@@ -18,9 +18,9 @@ public class NewsCardView: UIView {
         return imageView
     }()
     private var newsStackView : UIStackView = {
-        let stackView       = UIStackView()
-        stackView.axis      = .vertical
-        stackView.spacing   = 8
+        let stackView     = UIStackView()
+        stackView.axis    = .vertical
+        stackView.spacing = 8
         return stackView
     }()
     private var titleLabel: UILabel = {
@@ -33,11 +33,11 @@ public class NewsCardView: UIView {
     }()
     
     private var descriptionLabel: UILabel = {
-        let label                       = UILabel()
-        label.font                      = UIFont.font(.nunitoBold, size: .small)
-        label.textAlignment             = .left
-        label.textColor                 = .appTitle
-        label.numberOfLines             = 3
+        let label           = UILabel()
+        label.font          = UIFont.font(.nunitoBold, size: .small)
+        label.textAlignment = .left
+        label.textColor     = .appTitle
+        label.numberOfLines = 3
         return label
     }()
     
@@ -73,7 +73,7 @@ extension NewsCardView{
         addSubview(newsStackView)
         newsStackView.leadingToTrailing(of: imageView, offset: 10)
         newsStackView.trailingToSuperview().constant  = -10
-        newsStackView.topToSuperview().constant = 18
+        newsStackView.topToSuperview().constant       = 18
         newsStackView.addArrangedSubview(titleLabel)
         newsStackView.addArrangedSubview(descriptionLabel)
     }
