@@ -10,8 +10,6 @@ import UIKit
 
 final class CategoriesViewController: BaseViewController<CategoriesViewModel> {
     
-    private var selectedIndex = 0
-    
     private let collectionView: UICollectionView = {
         let layout         = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -80,6 +78,12 @@ extension CategoriesViewController: HeaderViewEventSource{
         default:
             break
         }
+        
+        func didSelectHeaderItem(at index: IndexPath) {
+            guard let listingType = ListingType(rawValue: index.item) else { return }
+            viewModel.fetchNews(listingType: listingType)
+        }
+        
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
