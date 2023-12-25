@@ -218,10 +218,10 @@
 				9807F8772B2630E9001DABE3 /* Base */,
 				9807F8782B2630ED001DABE3 /* MainTabBar */,
 				9807F8762B2630DF001DABE3 /* Intro */,
-				98E1ABFE2B27B8CA000BB3D0 /* Search */,
 				98E1ABFD2B27B8B2000BB3D0 /* Home */,
-				98DEB5A02B289E24008B6384 /* NewsDetail */,
 				98E1ABFC2B27B8AA000BB3D0 /* Categories */,
+				98E1ABFE2B27B8CA000BB3D0 /* Search */,
+				98DEB5A02B289E24008B6384 /* NewsDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
