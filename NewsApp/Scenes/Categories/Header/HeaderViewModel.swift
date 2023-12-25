@@ -6,7 +6,7 @@
 //
 
 protocol HeaderViewDataSource {
-    func numberOfItemsAt(section: Int) -> Int
+    func numberOfItemsAt(section: Int)    -> Int
     func cellItemAt(indexPath: IndexPath) -> HeaderViewCellProtocol
 }
 

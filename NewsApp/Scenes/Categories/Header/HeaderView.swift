@@ -71,17 +71,16 @@ extension HeaderView : UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         cell.layer.borderWidth  = 0.4
         cell.layer.borderColor  = Asset.Colors.appTitle.color.cgColor
         cell.layer.cornerRadius = 10
-        let cellItem           = viewmodel.cellItemAt(indexPath: indexPath)
+        let cellItem            = viewmodel.cellItemAt(indexPath: indexPath)
         cell.set(viewModel: cellItem)
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellItem = viewmodel.cellItemAt(indexPath: indexPath)
+        let cellItem  = viewmodel.cellItemAt(indexPath: indexPath)
         let titleText = cellItem.titleText
-        
-        let label = HeaderViewCell().titleLabel
-        label.text = titleText
+        let label     = HeaderViewCell().titleLabel
+        label.text    = titleText
         let textWidth = label.contentWidth()
         let cellWidth = textWidth + 20
         let cellHeight: CGFloat = 30
