@@ -27,7 +27,7 @@ public class NewsCell: UICollectionViewCell, ReusableView{
     
     private func configureContents() {
         addSubview(newsCard)
-        newsCard.backgroundColor    = .appRaven //.appWhite
+        newsCard.backgroundColor    = .appWhite
         newsCard.layer.cornerRadius = 2
         
         let bottomBorder             = CALayer()
