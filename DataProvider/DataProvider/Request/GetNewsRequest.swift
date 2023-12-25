@@ -5,7 +5,7 @@
 //  Created by Şehriban Yıldırım on 11.12.2023.
 //
 
-public enum ListingType {
+public enum ListingType : Int {
     case business
     case entertainment
     case health
