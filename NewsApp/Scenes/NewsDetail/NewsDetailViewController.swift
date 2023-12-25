@@ -31,6 +31,7 @@ extension NewsDetailViewController {
         view.addSubview(detailCardView)
         detailCardView.edgesToSuperview()
         detailCardView.newsSourceButton.addTarget(self, action: #selector(newsSourceButtonTapped), for: .touchUpInside)
+        detailCardView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
 }
 // MARK: - Configure and Set Localize
@@ -44,6 +45,10 @@ extension NewsDetailViewController {
                 print("URL açılamadı")
             }
         }
+    }
+    
+    @objc func backButtonTapped(){
+        navigationController?.popViewController(animated: true)
     }
     
     private func formatDate(_ dateString: String) -> String? {
