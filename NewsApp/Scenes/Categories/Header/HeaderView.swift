@@ -66,16 +66,26 @@ extension HeaderView : UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell               = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderViewCell.identifier, for: indexPath) as! HeaderViewCell
-        cell.layer.borderWidth = 0.4
-        cell.layer.borderColor = Asset.Colors.appTitle.color.cgColor
+        let cell                = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderViewCell.identifier, for: indexPath) as! HeaderViewCell
+        cell.backgroundColor    = Asset.Colors.appSecondaryBackground.color
+        cell.layer.borderWidth  = 0.4
+        cell.layer.borderColor  = Asset.Colors.appTitle.color.cgColor
+        cell.layer.cornerRadius = 10
         let cellItem           = viewmodel.cellItemAt(indexPath: indexPath)
         cell.set(viewModel: cellItem)
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 30)
+        let cellItem = viewmodel.cellItemAt(indexPath: indexPath)
+        let titleText = cellItem.titleText
+        
+        let label = HeaderViewCell().titleLabel
+        label.text = titleText
+        let textWidth = label.contentWidth()
+        let cellWidth = textWidth + 20
+        let cellHeight: CGFloat = 30
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
