@@ -13,9 +13,16 @@ protocol NewsDetailViewDataSource {
 
 protocol NewsDetailViewEventSource {}
 
-protocol NewsDetailViewProtocol: NewsDetailViewDataSource, NewsDetailViewEventSource {}
+protocol NewsDetailViewProtocol: NewsDetailViewDataSource, NewsDetailViewEventSource {
+    func showNewsSourcesScreen(at url: URL)
+}
 
 final class NewsDetailViewModel: BaseViewModel<NewsDetailRouter>, NewsDetailViewProtocol {
+    
+    func showNewsSourcesScreen(at url: URL) {
+        router.presentSources(articleURL: url)
+    }
+    
     var articleDetail: Article
     
     init(articleDetail: Article, router: NewsDetailRouter) {
