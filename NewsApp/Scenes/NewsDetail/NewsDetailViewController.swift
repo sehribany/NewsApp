@@ -39,30 +39,12 @@ extension NewsDetailViewController {
     
     @objc func newsSourceButtonTapped() {
         if let url = URL(string: viewModel.articleDetail.url) {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                print("URL açılamadı")
-            }
+            viewModel.showNewsSourcesScreen(at: url)
         }
     }
     
     @objc func backButtonTapped(){
         navigationController?.popViewController(animated: true)
-    }
-    
-    private func formatDate(_ dateString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    
-        if let date = dateFormatter.date(from: dateString) {
-            let newDateFormatter = DateFormatter()
-            newDateFormatter.dateFormat = "dd/MM/yyyy"
-            return newDateFormatter.string(from: date)
-        } else {
-            return nil
-        }
     }
     
     private func authorControl(_ author: String?) -> String {
@@ -72,24 +54,12 @@ extension NewsDetailViewController {
         return author
     }
     
-    private func removeExtraText(_ input: String?) -> String {
-        guard let input = input else {
-            return ""
-        }
-        var modifiedString = input
-        
-        if let range = modifiedString.range(of: "\\[\\+\\d+ chars\\]", options: .regularExpression) {
-            modifiedString.removeSubrange(range)
-        }
-        return modifiedString
-    }
-    
     public func set() {
         detailCardView.imageView.setImage(viewModel.articleDetail.urlToImage)
         detailCardView.titleLabel.text       = viewModel.articleDetail.title
         detailCardView.authorLabel.text      = authorControl(viewModel.articleDetail.author)
-        detailCardView.dateLabel.text        = formatDate(viewModel.articleDetail.publishedAt)
-        let trimmedText = removeExtraText(viewModel.articleDetail.content)
+        detailCardView.dateLabel.text        = viewModel.articleDetail.publishedAt.dateFormatter()
+        let trimmedText                      = viewModel.articleDetail.content!.removeExtraText()
         detailCardView.descriptionLabel.text = trimmedText
     }
 }
