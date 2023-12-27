@@ -21,7 +21,6 @@ final class CategoriesViewController: BaseViewController<CategoriesViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Asset.Colors.appWhite.color
         addNavigationBarLogo()
         addSubViews()
         configureContents()
@@ -52,7 +51,7 @@ extension CategoriesViewController {
 // MARK: - Configure and Set Localize
 extension CategoriesViewController {
     private func configureContents() {
-        collectionView.backgroundColor = Asset.Colors.appSecondaryBackground.color
+        collectionView.backgroundColor = Asset.Colors.appWhite.color
         collectionView.delegate        = self
         collectionView.dataSource      = self
     }
