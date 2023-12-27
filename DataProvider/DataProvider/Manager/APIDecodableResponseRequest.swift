@@ -4,7 +4,7 @@
 //
 //  Created by Şehriban Yıldırım on 10.12.2023.
 //
-//aa76d1da00604d86a1f9cc53cc425ed0
+
 public protocol APIDecodableResponseRequest: DecodableResponseRequest {}
 
 // MARK: - RequestEncoding
@@ -39,4 +39,3 @@ public extension APIDecodableResponseRequest {
         return [:]
     }
 }
-//0b921597f4ec4a62bf281c491a9ce880
