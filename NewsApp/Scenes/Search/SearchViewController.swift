@@ -18,7 +18,7 @@ final class SearchViewController: BaseViewController<SearchViewModel> {
     }()
     
     private let collectionView: UICollectionView = {
-        let layout                     = UICollectionViewLayout()
+        let layout                     = UICollectionViewFlowLayout()
         let collectionView             = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = Asset.Colors.appWhite.color
         collectionView.register(NewsCell.self, forCellWithReuseIdentifier: NewsCell.identifier)
@@ -60,6 +60,7 @@ extension SearchViewController{
         view.addSubview(collectionView)
         collectionView.topToBottom(of: searchBar)
         collectionView.edgesToSuperview(excluding: .top)
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
@@ -87,7 +88,9 @@ extension SearchViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.showNewsDetailScreen(at: indexPath)
+        DispatchQueue.main.async {
+            self.viewModel.showNewsDetailScreen(at: indexPath)
+        }
     }
 }
 
