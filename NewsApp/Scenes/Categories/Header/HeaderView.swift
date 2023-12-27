@@ -44,18 +44,18 @@ public class HeaderView: UICollectionReusableView {
     var delegate      : HeaderViewEventSource?
 }
 // MARK: - UILayout
-
 extension HeaderView{
     
-    public func addSubViews(){
+    private func addSubViews(){
         addCollectionView()
     }
     
-    public func addCollectionView(){
+    private func addCollectionView(){
         addSubview(nestedCollectionView)
         nestedCollectionView.dataSource = self
         nestedCollectionView.delegate   = self
-        nestedCollectionView.frame      = bounds
+        let inset: CGFloat              = 9.0
+        nestedCollectionView.frame      = CGRect(x: inset, y: bounds.origin.y, width: bounds.width - inset, height: bounds.height)
     }
 }
 // MARK: - UICollectionViewDelegate and UICollectionViewDataSource
