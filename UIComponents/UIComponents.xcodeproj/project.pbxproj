@@ -40,6 +40,7 @@
 		98DEB5A82B28B6A3008B6384 /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB5A72B28B6A3008B6384 /* NewsCellViewModel.swift */; };
 		98DEB5AB2B28B764008B6384 /* NewsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB5AA2B28B764008B6384 /* NewsCardView.swift */; };
 		98DEB5AD2B28B77A008B6384 /* NewsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DEB5AC2B28B77A008B6384 /* NewsCardViewModel.swift */; };
+		98F947A22B3AF82D00436112 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F947A12B3AF82D00436112 /* String+Extensions.swift */; };
 		EC0C833981731BFCDC388D78 /* Pods_UIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0818A9239EF937F9796FFEC8 /* Pods_UIComponents.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		98DEB5A72B28B6A3008B6384 /* NewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
 		98DEB5AA2B28B764008B6384 /* NewsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardView.swift; sourceTree = "<group>"; };
 		98DEB5AC2B28B77A008B6384 /* NewsCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardViewModel.swift; sourceTree = "<group>"; };
+		98F947A12B3AF82D00436112 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AF7814F450405ED947EF40BD /* Pods-UIComponents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIComponents.debug.xcconfig"; path = "Target Support Files/Pods-UIComponents/Pods-UIComponents.debug.xcconfig"; sourceTree = "<group>"; };
 		FE18AA5F15BB92C7D5C607F7 /* Pods-UIComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIComponents.release.xcconfig"; path = "Target Support Files/Pods-UIComponents/Pods-UIComponents.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +223,7 @@
 				9807F8B52B264A18001DABE3 /* UIImageView+Extensions.swift */,
 				9807F8B72B264D26001DABE3 /* UIImage+Extensions.swift */,
 				98B5CCE12B38C4C200FED7CC /* UILabel+Extensions.swift */,
+				98F947A12B3AF82D00436112 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				988D729A2B35C9E100691418 /* HeaderViewCellModel.swift in Sources */,
+				98F947A22B3AF82D00436112 /* String+Extensions.swift in Sources */,
 				98DEB5AB2B28B764008B6384 /* NewsCardView.swift in Sources */,
 				9807F85E2B2622CA001DABE3 /* StringConstants.swift in Sources */,
 				98DEB5A82B28B6A3008B6384 /* NewsCellViewModel.swift in Sources */,
