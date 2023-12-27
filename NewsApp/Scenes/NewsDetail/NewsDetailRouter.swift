@@ -5,4 +5,6 @@
 //  Created by Şehriban Yıldırım on 19.12.2023.
 //
 
-final class NewsDetailRouter: Router {}
+final class NewsDetailRouter: Router , NewsDetailRouter.Routes{
+    typealias Routes = SourcesRoute
+}
