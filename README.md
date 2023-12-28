@@ -20,7 +20,6 @@
 - KeyChain Swift
 - MobilliumUserDefaults
 
-
 ## Screenshots
 
 https://github.com/sehribany/NewsApp/assets/65239293/6b5813a5-a439-4635-931c-2d44d01bbf19
