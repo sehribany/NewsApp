@@ -1,8 +1,6 @@
 # NEWS APP
 
 
-
-
 ## Concepts & Technologies Used
 - Swift
 - MVVM-R
