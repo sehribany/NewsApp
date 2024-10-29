@@ -1,5 +1,5 @@
 # NEWS APP
-
+This project is the project of the News App. 
 
 ## Concepts & Technologies Used
 - Swift
