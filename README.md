@@ -17,7 +17,6 @@ This project is the project of the News App.
 - SwiftEntryKit
 - KeyChain Swift
 - MobilliumUserDefaults
-  
 
 ## Screenshots
 
